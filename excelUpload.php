@@ -15,15 +15,17 @@ if(isset($_POST['Submit'])){
       $file = $_FILES['file_name']['tmp_name'];
       
       $objPHPExcel = PHPExcel_IOFactory::load($file);
-      // Get worksheet dimensions
+     
+      // GET WORKSHEET DIMENSIONS
       $sheet = $objPHPExcel->getSheet(0);
       $highestRow = $sheet->getHighestRow();
       $highestColumn = $sheet->getHighestColumn();
 
       $data= array();
-      // Loop through each row of the worksheet in turn
+      
+
       for ($row = 2; $row <= $highestRow; $row++){
-        // Read a row of data into an array
+        // READING THE ROW
         $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,NULL,TRUE,FALSE);
 
         $id=isset($rowData[0][0])?$rowData[0][0]:'';
@@ -32,7 +34,7 @@ if(isset($_POST['Submit'])){
         $company_id=isset($rowData[0][3])?$rowData[0][3]:'';
         $description=isset($rowData[0][4])?$rowData[0][4]:'';
         
-         
+         // INSERT INTO DB
          if($product_name!='' || $offer_id!='' || $company_id!='' || $description!=''){
             $query = "insert into data(product_name,offer_id,company_id,description) values('".$product_name."','".$offer_id."','".$company_id."','".$description."')";
              $res = $mysqli->query($query);
