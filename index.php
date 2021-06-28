@@ -19,7 +19,7 @@
 		<div class="form-group">
 			<button type="submit" name="Submit" class="btn btn-success">Upload</button>
 		</div>
-		<p>Download Demo File from here : <a href="demo.ods"><strong>Demo.ods</strong></a></p>
+		<p><a href="https://github.com/amitlemosys/excel/blob/master/sample.xlsx">Download Demo File</a></p>
 	</form>
 </div>
 
